@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gte.xyz/openapi.yaml
+docs: https://docs.gte.xyz
+summary:
+  types: [signature]
+  api_key_in: []
+  oauth2_flows: []
+model: evm-wallet-signature
+notes: >-
+  GTE is a non-custodial decentralized exchange on MegaETH. The OpenAPI declares no
+  securitySchemes (apiKey / http / oauth2 / openIdConnect / mutualTLS): all read
+  endpoints (tokens, markets, candles, trades, book, user portfolio/orders) are
+  public and unauthenticated, keyed only by the EVM wallet address in the path
+  (e.g. /users/{user_address}/portfolio). Write access is via POST /exchange, which
+  accepts a signed EVM transaction body — authorization is cryptographic (the user
+  signs the order/trade transaction with their wallet key), not an API key or OAuth
+  token. The GTE Python SDK (packages/gte-packages.yml) constructs and signs the
+  transaction body.
+schemes: []
