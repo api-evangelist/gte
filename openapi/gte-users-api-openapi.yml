@@ -1,0 +1,592 @@
+openapi: 3.0.0
+info:
+  title: GTE Exchange Users API
+  version: 0.1.0
+  description: API for GTE trading and historical data
+  contact:
+    name: API Support
+    url: https://docs.gte.xyz
+    email: support@liquidlabs.inc
+servers:
+- url: https://api-testnet.gte.xyz/v1
+  description: GTE API Testnet HTTP Server
+- url: wss://api-testnet.gte.xyz/ws
+  description: GTE API Testnet WebSocket Server
+tags:
+- name: Users
+paths:
+  /users/{user_address}/lppositions:
+    get:
+      tags:
+      - Users
+      operationId: GetUserLpPositions
+      summary: Get LP positions for a user
+      parameters:
+      - name: user_address
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      responses:
+        '200':
+          description: List of user's LP positions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserLpPositionsResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/{user_address}/portfolio:
+    get:
+      tags:
+      - Users
+      operationId: GetUserPortfolio
+      summary: Get user's portfolio
+      parameters:
+      - name: user_address
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      responses:
+        '200':
+          description: User's portfolio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserPortfolioResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/{user_address}/trades:
+    get:
+      tags:
+      - Users
+      operationId: GetUserTrades
+      summary: Get user trades.
+      description: Gets user trades on GTE. Returns all trades from all markets if `market_address` is empty.
+      parameters:
+      - name: user_address
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      - name: market_address
+        in: query
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+          format: uint
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+          format: uint
+      responses:
+        '200':
+          description: List of user's trades
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTradeListResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User or market not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/{user_address}/open_orders:
+    get:
+      tags:
+      - Users
+      operationId: GetOpenOrders
+      summary: Get open orders for a user
+      parameters:
+      - name: user_address
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      - name: market_address
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      responses:
+        '200':
+          description: List of user's open orders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserOpenOrdersResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User or market not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/{user_address}/filled_orders:
+    get:
+      tags:
+      - Users
+      operationId: GetFilledOrders
+      summary: Get filled orders for a user
+      parameters:
+      - name: user_address
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      - name: market_address
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      responses:
+        '200':
+          description: List of user's filled orders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserFilledOrdersResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User or market not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/{user_address}/order_history:
+    get:
+      tags:
+      - Users
+      operationId: GetOrderHistory
+      summary: Get order history for a user
+      parameters:
+      - name: user_address
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      - name: market_address
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      responses:
+        '200':
+          description: List of user's order history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserOrderHistoryResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User or market not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    GetUserOrderHistoryResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Order'
+    FilledOrder:
+      allOf:
+      - $ref: '#/components/schemas/BasicOrder'
+      - type: object
+        required:
+        - txnHash
+        - filledAt
+        - price
+        - sizeFilled
+        properties:
+          txnHash:
+            $ref: '#/components/schemas/EvmTxnHash'
+          filledAt:
+            type: integer
+            format: int64
+            description: Timestamp of when the order was filled in UTC millis
+          price:
+            type: string
+            description: Price in which the order was filled in quote tokens
+          sizeFilled:
+            type: string
+            description: Size filled in base token
+    UserPortfolio:
+      type: object
+      required:
+      - tokens
+      - totalUsdBalance
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/TokenBalance'
+        totalUsdBalance:
+          type: number
+          format: double
+          description: User's total USD balance
+    BasicOrder:
+      type: object
+      required:
+      - orderId
+      - marketAddress
+      - side
+      properties:
+        orderId:
+          type: string
+        marketAddress:
+          $ref: '#/components/schemas/EvmAddress'
+        side:
+          $ref: '#/components/schemas/OrderSide'
+    GetUserOpenOrdersResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/OpenOrder'
+    Trade:
+      type: object
+      description: Trades in Launchpad and AMM markets.
+      required:
+      - timestamp
+      - txnHash
+      - maker
+      - taker
+      - price
+      - size
+      - side
+      - marketAddress
+      properties:
+        marketAddress:
+          $ref: '#/components/schemas/EvmAddress'
+          description: EVM address of the market
+        timestamp:
+          type: integer
+          format: int64
+          description: Timestamp of the trade in milliseconds
+        txnHash:
+          $ref: '#/components/schemas/EvmTxnHash'
+          description: Transaction hash of the trade
+        maker:
+          $ref: '#/components/schemas/EvmAddress'
+          description: EVM address of the maker
+        taker:
+          $ref: '#/components/schemas/EvmAddress'
+          description: EVM address of the taker
+        price:
+          type: number
+          format: double
+          description: Price of the trade in quote tokens
+        size:
+          type: number
+          format: double
+          description: Size of the trade in base tokens
+        side:
+          $ref: '#/components/schemas/TradeSide'
+          description: Side of the trade by the taker
+    Token:
+      type: object
+      required:
+      - address
+      - decimals
+      - name
+      - symbol
+      - totalSupply
+      - logoUri
+      - priceUsd
+      - volume1HrUsd
+      - volume24HrUsd
+      - marketCapUsd
+      properties:
+        address:
+          $ref: '#/components/schemas/EvmAddress'
+        decimals:
+          type: integer
+          description: Number of decimals for the token
+        name:
+          type: string
+          description: Name of the token
+        symbol:
+          type: string
+          description: Symbol of the token
+        totalSupply:
+          type: number
+          format: double
+          description: Total supply of the token
+        logoUri:
+          type: string
+          nullable: true
+          description: URI of the token's logo
+        priceUsd:
+          type: number
+          format: double
+          description: Price of token in USD
+        volume1HrUsd:
+          type: number
+          format: double
+          description: 1 hour volume in USD
+        volume24HrUsd:
+          type: number
+          format: double
+          description: 24 hour volume in USD
+        marketCapUsd:
+          type: number
+          format: double
+          description: Token market cap in USD
+    LpPosition:
+      type: object
+      required:
+      - market
+      - balance
+      - shareOfPool
+      - apr
+      - token0Amount
+      - token1Amount
+      properties:
+        market:
+          $ref: '#/components/schemas/Market'
+          description: Market in which the LP position is held
+        balance:
+          type: number
+          format: double
+          description: Amount of LP tokens a user holds
+        shareOfPool:
+          type: number
+          format: float
+          description: Percentage of the pool of the position
+        apr:
+          type: number
+          format: float
+          description: APR of the liquidity pool
+        token0Amount:
+          type: string
+          description: Amount of token0 in LP
+        token1Amount:
+          type: string
+          description: Amount of token1 in Lp
+    GetUserPortfolioResponse:
+      $ref: '#/components/schemas/UserPortfolio'
+    ErrorResponse:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: Error message
+    OpenOrder:
+      allOf:
+      - $ref: '#/components/schemas/BasicOrder'
+      - type: object
+        required:
+        - originalSize
+        - limitPrice
+        - sizeFilled
+        - placedAt
+        properties:
+          originalSize:
+            type: string
+            description: Original size of the order in base token
+          limitPrice:
+            type: string
+            description: Limit price of the order in quote token
+          sizeFilled:
+            type: string
+            description: Size filled in base token
+          placedAt:
+            type: integer
+            format: int64
+            description: Timestamp of when the order was first placed in UTC millis
+    GetUserFilledOrdersResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/FilledOrder'
+    GetTradeListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Trade'
+    Market:
+      type: object
+      required:
+      - marketType
+      - address
+      - baseToken
+      - quoteToken
+      - price
+      - priceUsd
+      - volume24HrUsd
+      - volume1HrUsd
+      - marketCapUsd
+      - createdAt
+      - tvlUsd
+      properties:
+        marketType:
+          $ref: '#/components/schemas/MarketType'
+        address:
+          $ref: '#/components/schemas/EvmAddress'
+          description: EVM address of the market
+        baseToken:
+          $ref: '#/components/schemas/Token'
+          description: Base token of the market. On AMMs, this token comes first in the pair
+        quoteToken:
+          $ref: '#/components/schemas/Token'
+          description: Quote token of the market. On AMMs, this token comes second in the pair
+        price:
+          type: number
+          format: double
+          description: Price of the base token in quote tokens.
+        priceUsd:
+          type: number
+          format: double
+          description: Price of the base token in USD.
+        volume24HrUsd:
+          type: number
+          format: double
+          description: Volume of the market in the last 24 hours in USD
+        volume1HrUsd:
+          type: number
+          format: double
+          description: Volume of the market in the last 1 hour in USD
+        marketCapUsd:
+          type: number
+          format: double
+          description: Market cap of the market in USD
+        createdAt:
+          type: integer
+          format: int64
+          description: Timestamp of when the market was deployed in UTC millis
+          nullable: true
+        tvlUsd:
+          type: number
+          nullable: true
+          format: double
+          description: TVL of the market in Usd. Null if not applicable.
+    OrderSide:
+      type: string
+      enum:
+      - bid
+      - ask
+      description: Side of the order
+    TradeSide:
+      type: string
+      enum:
+      - buy
+      - sell
+      description: Side of the trade
+    EvmTxnHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
+      description: EVM transaction hash
+    GetUserLpPositionsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/LpPosition'
+    MarketType:
+      type: string
+      enum:
+      - bonding-curve
+      - amm
+      - clob-spot
+      - perps
+      description: Type of the market
+    Order:
+      allOf:
+      - $ref: '#/components/schemas/BasicOrder'
+      - type: object
+        required:
+        - orderType
+        - originalSize
+        - limitPrice
+        - placedAt
+        properties:
+          orderType:
+            $ref: '#/components/schemas/OrderType'
+          originalSize:
+            type: string
+            description: Original size of the order in base token
+          limitPrice:
+            type: string
+            description: Limit price of the order in quote token
+          placedAt:
+            type: integer
+            format: int64
+            description: Timestamp of when the order was first placed in UTC millis
+    TokenBalance:
+      type: object
+      required:
+      - token
+      - balance
+      - balanceUsd
+      - realizedPnlUsd
+      - unrealizedPnlUsd
+      properties:
+        token:
+          $ref: '#/components/schemas/Token'
+        balance:
+          type: string
+          description: Balance of the asset
+        balanceUsd:
+          type: number
+          format: double
+          description: Balance of the asset in USD
+        realizedPnlUsd:
+          type: number
+          format: double
+          description: Realized pnl in USD
+        unrealizedPnlUsd:
+          type: number
+          format: double
+          description: Unrealized pnl in USD
+    EvmAddress:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      description: EVM address
+    OrderType:
+      type: string
+      enum:
+      - limit
+      - fill

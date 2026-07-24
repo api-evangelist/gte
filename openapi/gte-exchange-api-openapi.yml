@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: GTE Exchange API
+  version: 0.1.0
+  description: API for GTE trading and historical data
+  contact:
+    name: API Support
+    url: https://docs.gte.xyz
+    email: support@liquidlabs.inc
+servers:
+- url: https://api-testnet.gte.xyz/v1
+  description: GTE API Testnet HTTP Server
+- url: wss://api-testnet.gte.xyz/ws
+  description: GTE API Testnet WebSocket Server
+tags:
+- name: Exchange
+paths:
+  /exchange:
+    post:
+      tags:
+      - Exchange
+      operationId: Exchange
+      summary: Post orders and trades to GTE
+      description: This endpoint allows you post orders and trades to GTE. Take a look at the [GTE Python SDK](https://github.com/liquid-labs-inc/gte-python-sdk) on how to construct the transaction body.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Transaction object
+              type: object
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object

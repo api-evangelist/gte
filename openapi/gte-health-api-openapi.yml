@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: GTE Exchange Health API
+  version: 0.1.0
+  description: API for GTE trading and historical data
+  contact:
+    name: API Support
+    url: https://docs.gte.xyz
+    email: support@liquidlabs.inc
+servers:
+- url: https://api-testnet.gte.xyz/v1
+  description: GTE API Testnet HTTP Server
+- url: wss://api-testnet.gte.xyz/ws
+  description: GTE API Testnet WebSocket Server
+tags:
+- name: Health
+paths:
+  /health:
+    get:
+      operationId: GetServerHealth
+      summary: Get API health status
+      responses:
+        '200':
+          description: Health check response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerHealthResponse'
+      tags:
+      - Health
+components:
+  schemas:
+    ServerHealthResponse:
+      type: object
+      required:
+      - status
+      - timestamp
+      properties:
+        status:
+          type: string
+          enum:
+          - ok
+          - error
+          description: Status of the API
+        timestamp:
+          type: integer
+          format: int64
+          description: Timestamp of the health check in UTC millis

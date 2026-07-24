@@ -1,0 +1,263 @@
+openapi: 3.0.0
+info:
+  title: GTE Exchange Tokens API
+  version: 0.1.0
+  description: API for GTE trading and historical data
+  contact:
+    name: API Support
+    url: https://docs.gte.xyz
+    email: support@liquidlabs.inc
+servers:
+- url: https://api-testnet.gte.xyz/v1
+  description: GTE API Testnet HTTP Server
+- url: wss://api-testnet.gte.xyz/ws
+  description: GTE API Testnet WebSocket Server
+tags:
+- name: Tokens
+paths:
+  /tokens:
+    get:
+      tags:
+      - Tokens
+      operationId: GetTokens
+      summary: Get list of tokens supported on GTE
+      parameters:
+      - name: creator
+        in: query
+        description: Returns assets created by the given user address
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      - name: marketType
+        in: query
+        description: Filters assets by the given market type
+        schema:
+          $ref: '#/components/schemas/MarketType'
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 100
+          format: uint
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          format: uint
+      responses:
+        '200':
+          description: List of assets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTokenListResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /tokens/search:
+    get:
+      tags:
+      - Tokens
+      operationId: SearchTokens
+      summary: Search tokens based on name or symbol
+      parameters:
+      - name: q
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 100
+          format: uint
+      responses:
+        '200':
+          description: List of tokens
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTokenListResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /tokens/{token_address}:
+    get:
+      tags:
+      - Tokens
+      operationId: GetTokenByAddress
+      summary: Get token metadata by address
+      parameters:
+      - name: token_address
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/EvmAddress'
+      responses:
+        '200':
+          description: Token details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenMetadata'
+        '404':
+          description: Token not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    GetTokenListResponse:
+      description: List of tokens.
+      type: array
+      items:
+        $ref: '#/components/schemas/Token'
+    MarketType:
+      type: string
+      enum:
+      - bonding-curve
+      - amm
+      - clob-spot
+      - perps
+      description: Type of the market
+    ErrorResponse:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: Error message
+    EvmAddress:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      description: EVM address
+    DisplayMarket:
+      type: object
+      required:
+      - marketType
+      - marketAddress
+      properties:
+        marketType:
+          $ref: '#/components/schemas/MarketType'
+        marketAddress:
+          $ref: '#/components/schemas/EvmAddress'
+    Token:
+      type: object
+      required:
+      - address
+      - decimals
+      - name
+      - symbol
+      - totalSupply
+      - logoUri
+      - priceUsd
+      - volume1HrUsd
+      - volume24HrUsd
+      - marketCapUsd
+      properties:
+        address:
+          $ref: '#/components/schemas/EvmAddress'
+        decimals:
+          type: integer
+          description: Number of decimals for the token
+        name:
+          type: string
+          description: Name of the token
+        symbol:
+          type: string
+          description: Symbol of the token
+        totalSupply:
+          type: number
+          format: double
+          description: Total supply of the token
+        logoUri:
+          type: string
+          nullable: true
+          description: URI of the token's logo
+        priceUsd:
+          type: number
+          format: double
+          description: Price of token in USD
+        volume1HrUsd:
+          type: number
+          format: double
+          description: 1 hour volume in USD
+        volume24HrUsd:
+          type: number
+          format: double
+          description: 24 hour volume in USD
+        marketCapUsd:
+          type: number
+          format: double
+          description: Token market cap in USD
+    TokenMetadata:
+      allOf:
+      - $ref: '#/components/schemas/Token'
+      - type: object
+        required:
+        - createdAt
+        - numHolders
+        - creator
+        - description
+        - socials
+        - displayMarkets
+        properties:
+          createdAt:
+            type: integer
+            format: int64
+            description: Timestamp of the token creation
+          numHolders:
+            type: integer
+            format: int64
+            minimum: 0
+            description: Number of holders of the token
+          creator:
+            $ref: '#/components/schemas/EvmAddress'
+            nullable: true
+          description:
+            type: string
+            nullable: true
+            description: Token description
+          displayMarkets:
+            type: array
+            description: Top markets to display per market type
+            items:
+              $ref: '#/components/schemas/DisplayMarket'
+          socials:
+            type: object
+            required:
+            - website
+            - discord
+            - telegram
+            - x
+            properties:
+              website:
+                type: string
+                description: URL of the token's website
+                nullable: true
+              discord:
+                type: string
+                description: URL of the token's discord
+                nullable: true
+              telegram:
+                type: string
+                description: URL of the token's telegram
+                nullable: true
+              x:
+                type: string
+                description: URL of the token's X/Twitter
+                nullable: true

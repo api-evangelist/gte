@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: GTE Exchange Info API
+  version: 0.1.0
+  description: API for GTE trading and historical data
+  contact:
+    name: API Support
+    url: https://docs.gte.xyz
+    email: support@liquidlabs.inc
+servers:
+- url: https://api-testnet.gte.xyz/v1
+  description: GTE API Testnet HTTP Server
+- url: wss://api-testnet.gte.xyz/ws
+  description: GTE API Testnet WebSocket Server
+tags:
+- name: Info
+paths:
+  /info:
+    get:
+      operationId: GetGTEInfo
+      summary: Get GTE info
+      responses:
+        '200':
+          description: GTE info response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GTEInfoResponse'
+      tags:
+      - Info
+components:
+  schemas:
+    GTEInfoResponse:
+      type: object
+      required:
+      - totalMarkets
+      - launchedTokens
+      - volume24HrUsd
+      - volumeTotalUsd
+      properties:
+        totalMarkets:
+          type: integer
+          format: int64
+        launchedTokens:
+          type: integer
+          format: int64
+        volume24HrUsd:
+          type: number
+          format: double
+          description: Total 24hr volume on GTE in USD
+        volumeTotalUsd:
+          type: number
+          format: double
+          description: Total volume on GTE in USD
