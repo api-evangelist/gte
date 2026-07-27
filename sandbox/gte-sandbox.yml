@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gte.xyz/openapi.yaml
+summary: >-
+  GTE's public environment is its testnet. The documented API and app both target
+  testnet — there is no separate "test vs live" key model because access is
+  wallet-signature based, not keyed. Developers connect a wallet on MegaETH testnet
+  and use testnet funds; no test API keys, test cards, or hosted test tokens are
+  published.
+environments:
+- name: testnet
+  app: https://testnet.gte.xyz/
+  api_http: https://api-testnet.gte.xyz/v1
+  api_ws: wss://api-testnet.gte.xyz/ws
+  chain: MegaETH testnet
+  notes: >-
+    Both OpenAPI servers[] entries point at the testnet host. The testnet API
+    returned 503 during this pass (intermittent availability). No mainnet/production
+    API base URL is published in the OpenAPI at this time.
+test_values: []
+notes: >-
+  NEVER fabricate test values. GTE publishes no magic test identifiers, test card
+  numbers, or fixture tokens; testing is done against MegaETH testnet with a funded
+  wallet.

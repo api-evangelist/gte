@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of GTE hosts
+notes: >-
+  No /.well-known/ discovery documents were served by any GTE host at the time of
+  this pass. Absence is valid, recorded data. The API host (api-testnet.gte.xyz)
+  returned 503 (testnet unavailable) rather than 404 for its probes.
+hosts:
+- host: https://www.gte.xyz
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://docs.gte.xyz
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+- host: https://api-testnet.gte.xyz
+  documents:
+  - {path: /.well-known/security.txt, status: 503}
+  - {path: /.well-known/openid-configuration, status: 503}
+  - {path: /.well-known/oauth-authorization-server, status: 503}

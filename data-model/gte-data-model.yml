@@ -1,0 +1,41 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/gte-openapi-original.yml
+notes: >-
+  Entity-relationship graph derived from OpenAPI component schemas and the id-reference
+  fields that link them. GTE entities are keyed by on-chain EVM addresses (token_address,
+  market_address, user_address), so relationships are expressed via those address fields.
+entities:
+- name: Token
+  key: address (EvmAddress)
+  fields: [address, decimals, name, symbol, totalSupply, logoUri, priceUsd, volume1HrUsd, volume24HrUsd, marketCapUsd]
+- name: Market
+  key: address (EvmAddress)
+  fields: [marketType, baseToken, quoteToken]
+- name: Trade
+  key: composite
+  fields: [side, price, size, timestamp]
+- name: Candle
+  key: composite (market + interval + time)
+  fields: [interval, open, high, low, close, volume]
+- name: Order
+  variants: [BasicOrder, OpenOrder, FilledOrder]
+  fields: [side, type, status, price, size]
+- name: LpPosition
+  fields: [market, size]
+- name: UserPortfolio
+  key: user_address (EvmAddress)
+  fields: [balances, positions]
+- name: Book
+  fields: ['bids (BookLevel array)', 'asks (BookLevel array)']
+relationships:
+- {from: Market, to: Token, kind: has_one, via: baseToken}
+- {from: Market, to: Token, kind: has_one, via: quoteToken}
+- {from: Market, to: Trade, kind: has_many, via: market_address}
+- {from: Market, to: Candle, kind: has_many, via: market_address}
+- {from: Market, to: Book, kind: has_one, via: market_address}
+- {from: UserPortfolio, to: Order, kind: has_many, via: user_address}
+- {from: UserPortfolio, to: LpPosition, kind: has_many, via: user_address}
+- {from: UserPortfolio, to: Trade, kind: has_many, via: user_address}
+- {from: Order, to: Market, kind: belongs_to, via: market_address}
+- {from: LpPosition, to: Market, kind: belongs_to, via: market_address}

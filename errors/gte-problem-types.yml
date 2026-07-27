@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/gte-openapi-original.yml
+format: plain-json
+envelope:
+  schema: ErrorResponse
+  fields:
+    message: {type: string, required: true, description: Error message}
+  content_type: application/json
+  notes: GTE does not use RFC 9457 application/problem+json; errors are a flat object with a single "message" string.
+problems:
+- status: 400
+  title: Bad Request
+  meaning: Malformed request — invalid query parameters, address format, or transaction body.
+  applies_to: [SearchTokens, GetTokenByAddress, SearchMarkets, GetMarketByAddress, GetMarketCandles, GetMarketTrades, GetMarketBook, GetUserLpPositions, GetUserPortfolio, GetUserTrades, GetOpenOrders, Exchange]
+- status: 404
+  title: Not Found
+  meaning: Requested token, market, or user resource does not exist.
+  applies_to: [GetTokenByAddress, GetMarketByAddress, GetMarketCandles, GetMarketTrades, GetMarketBook, GetUserLpPositions, GetUserPortfolio, GetUserTrades, GetOpenOrders, GetFilledOrders, GetOrderHistory]
+notes: >-
+  Derived from the 400/404 responses declared across the 18 OpenAPI operations. All
+  error bodies share the ErrorResponse envelope. GTE is a DEX, not a card acquirer —
+  there is no decline-code surface, so no errors/gte-decline-codes.yml is emitted.

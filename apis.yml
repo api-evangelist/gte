@@ -1,8 +1,28 @@
 aid: gte
 name: GTE
-description: 'GTE is a company surfaced as a portfolio company of paradigm and added to the API Evangelist
-  network as a stub for enrichment. Sector: crypto-defi. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  GTE (Global Token Exchange) is a non-custodial, permissionless decentralized exchange
+  built on MegaETH, offering a central limit order book (CLOB) with CEX-level speed —
+  advertised at 100,000 orders per second and ~1ms latency — combined with DeFi security
+  properties. Users trade crypto and tokenized assets 24/7 from a self-custodied wallet,
+  with spot and leveraged/perpetual markets, shortable positions, and on-chain settlement.
+  GTE exposes a public HTTP + WebSocket API (GTE API v1) covering tokens, markets, candles,
+  trades, order books, and per-wallet portfolio/order data, plus a signed POST /exchange
+  endpoint for submitting orders and trades. An official Python SDK (gte-py) constructs the
+  signed transaction bodies. GTE is developed by Liquid Labs and backed by Paradigm.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://framerusercontent.com/images/dmNBRSvrpcZRlw2DSNsXF7eY0MA.png
 url: https://raw.githubusercontent.com/api-evangelist/gte/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +32,150 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Crypto Defi
-apis: []
+- Decentralized Exchange
+- Trading
+- Market Data
+- Order Book
+- Perpetuals
+- MegaETH
+- Blockchain
+apis:
+- aid: gte:gte-exchange-api
+  name: GTE Exchange API
+  description: The Exchange API from GTE — 1 operation(s) for exchange.
+  humanURL: https://docs.gte.xyz
+  baseURL: https://api-testnet.gte.xyz/v1
+  tags:
+  - Exchange
+  properties:
+  - type: OpenAPI
+    url: openapi/gte-exchange-api-openapi.yml
+  - type: APIReference
+    url: https://docs.gte.xyz/openapi.yaml
+- aid: gte:gte-health-api
+  name: GTE Health API
+  description: The Health API from GTE — 1 operation(s) for health.
+  humanURL: https://docs.gte.xyz
+  baseURL: https://api-testnet.gte.xyz/v1
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/gte-health-api-openapi.yml
+  - type: APIReference
+    url: https://docs.gte.xyz/openapi.yaml
+- aid: gte:gte-info-api
+  name: GTE Info API
+  description: The Info API from GTE — 1 operation(s) for info.
+  humanURL: https://docs.gte.xyz
+  baseURL: https://api-testnet.gte.xyz/v1
+  tags:
+  - Info
+  properties:
+  - type: OpenAPI
+    url: openapi/gte-info-api-openapi.yml
+  - type: APIReference
+    url: https://docs.gte.xyz/openapi.yaml
+- aid: gte:gte-markets-api
+  name: GTE Markets API
+  description: The Markets API from GTE — 6 operation(s) for markets.
+  humanURL: https://docs.gte.xyz
+  baseURL: https://api-testnet.gte.xyz/v1
+  tags:
+  - Markets
+  properties:
+  - type: OpenAPI
+    url: openapi/gte-markets-api-openapi.yml
+  - type: APIReference
+    url: https://docs.gte.xyz/openapi.yaml
+- aid: gte:gte-tokens-api
+  name: GTE Tokens API
+  description: The Tokens API from GTE — 3 operation(s) for tokens.
+  humanURL: https://docs.gte.xyz
+  baseURL: https://api-testnet.gte.xyz/v1
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/gte-tokens-api-openapi.yml
+  - type: APIReference
+    url: https://docs.gte.xyz/openapi.yaml
+- aid: gte:gte-users-api
+  name: GTE Users API
+  description: The Users API from GTE — 6 operation(s) for users.
+  humanURL: https://docs.gte.xyz
+  baseURL: https://api-testnet.gte.xyz/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/gte-users-api-openapi.yml
+  - type: APIReference
+    url: https://docs.gte.xyz/openapi.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/gte-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/gte-agentic-access.yml
+- type: Documentation
+  url: https://docs.gte.xyz
+- type: DeveloperPortal
+  url: https://docs.gte.xyz
+- type: LLMsTxt
+  url: llms/gte-llms.txt
+- type: Packages
+  url: packages/gte-packages.yml
+- type: SDKs
+  url: packages/gte-packages.yml
+- type: MCPServer
+  url: mcp/gte-mcp.yml
+- type: Authentication
+  url: authentication/gte-authentication.yml
+- type: Conventions
+  url: conventions/gte-conventions.yml
+- type: ErrorCatalog
+  url: errors/gte-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/gte-lifecycle.yml
+- type: Conformance
+  url: conformance/gte-conformance.yml
+- type: Sandbox
+  url: sandbox/gte-sandbox.yml
+- type: DataModel
+  url: data-model/gte-data-model.yml
+- type: WellKnown
+  url: well-known/gte-well-known.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/gte-openapi-overlay.yaml
+- type: GitHubOrganization
+  url: https://github.com/Liquid-Labs-Inc
+- type: Blog
+  url: https://www.gte.xyz/blog
+- type: Support
+  url: https://discord.com/invite/gte-xyz
+- type: SignUp
+  url: https://testnet.gte.xyz/
+- type: TermsOfService
+  url: https://www.gte.xyz/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.gte.xyz/privacy-policy
+- type: X
+  url: https://x.com/GTE_XYZ
 - type: Website
   url: https://www.gte.xyz
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

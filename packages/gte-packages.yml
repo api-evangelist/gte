@@ -1,0 +1,19 @@
+generated: '2026-07-19'
+method: searched
+source: https://pypi.org/project/gte-py/
+packages:
+- language: python
+  registry: pypi
+  name: gte-py
+  version: 0.1.3
+  url: https://pypi.org/project/gte-py/
+  install: pip install gte-py
+  repository: https://github.com/liquid-labs-inc/gte-python-sdk
+  summary: GTE Python SDK — interact with the GTE decentralized exchange on MegaETH (market queries, trade execution, token operations, orderbook monitoring).
+  license: MIT
+  official: true
+notes: >-
+  The POST /exchange operation in the OpenAPI explicitly points developers to the
+  GTE Python SDK to construct the signed transaction body. No npm, Maven, NuGet,
+  Go, RubyGems, Packagist, or crates.io first-party client library was found at the
+  time of this pass; gte-py is the only published GTE client SDK.

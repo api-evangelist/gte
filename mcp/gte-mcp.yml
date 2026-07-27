@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/gte-openapi-original.yml
+server:
+  name: gte
+  transport: http
+  url: null
+notes: >-
+  No official hosted/remote GTE MCP server was found (docs, npm @modelcontextprotocol,
+  MCP registries). Candidate tool list derived one-per-operation from the GTE OpenAPI;
+  the read tools map cleanly to market/user data. The write tool (submit_exchange)
+  requires a signed EVM transaction body constructed via the GTE Python SDK.
+tools:
+- {name: get_server_health, description: Server health check, source_operation: 'openapi/gte-openapi-original.yml#GetServerHealth'}
+- {name: get_gte_info, description: Get GTE exchange info, source_operation: 'openapi/gte-openapi-original.yml#GetGTEInfo'}
+- {name: get_tokens, description: List tokens, source_operation: 'openapi/gte-openapi-original.yml#GetTokens'}
+- {name: search_tokens, description: Search tokens, source_operation: 'openapi/gte-openapi-original.yml#SearchTokens'}
+- {name: get_token_by_address, description: Get a token by EVM address, source_operation: 'openapi/gte-openapi-original.yml#GetTokenByAddress'}
+- {name: get_markets, description: List markets, source_operation: 'openapi/gte-openapi-original.yml#GetMarkets'}
+- {name: search_markets, description: Search markets, source_operation: 'openapi/gte-openapi-original.yml#SearchMarkets'}
+- {name: get_market_by_address, description: Get a market by address, source_operation: 'openapi/gte-openapi-original.yml#GetMarketByAddress'}
+- {name: get_market_candles, description: Get market OHLC candles, source_operation: 'openapi/gte-openapi-original.yml#GetMarketCandles'}
+- {name: get_market_trades, description: Get recent market trades, source_operation: 'openapi/gte-openapi-original.yml#GetMarketTrades'}
+- {name: get_market_book, description: Get the order book for a market, source_operation: 'openapi/gte-openapi-original.yml#GetMarketBook'}
+- {name: get_user_lp_positions, description: Get a user's LP positions, source_operation: 'openapi/gte-openapi-original.yml#GetUserLpPositions'}
+- {name: get_user_portfolio, description: Get a user's portfolio, source_operation: 'openapi/gte-openapi-original.yml#GetUserPortfolio'}
+- {name: get_user_trades, description: Get a user's trades, source_operation: 'openapi/gte-openapi-original.yml#GetUserTrades'}
+- {name: get_open_orders, description: Get a user's open orders, source_operation: 'openapi/gte-openapi-original.yml#GetOpenOrders'}
+- {name: get_filled_orders, description: Get a user's filled orders, source_operation: 'openapi/gte-openapi-original.yml#GetFilledOrders'}
+- {name: get_order_history, description: Get a user's order history, source_operation: 'openapi/gte-openapi-original.yml#GetOrderHistory'}
+- {name: submit_exchange, description: Post signed orders and trades to GTE (requires signed EVM transaction body), source_operation: 'openapi/gte-openapi-original.yml#Exchange'}

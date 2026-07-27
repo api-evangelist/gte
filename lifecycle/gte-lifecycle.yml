@@ -1,0 +1,22 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/gte-openapi-original.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  http_base: https://api-testnet.gte.xyz/v1
+  ws_base: wss://api-testnet.gte.xyz/ws
+  api_version: '0.1.0'
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No deprecation policy or RFC 8594 Sunset/Deprecation header support is documented.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
+notes: >-
+  GTE publishes no public status page, SLA, or deprecation policy at the time of this
+  pass; the API is early (version 0.1.0) and testnet-targeted. No StatusPage or
+  Deprecation pointer is emitted (none found). No operations are marked deprecated
+  in the OpenAPI.

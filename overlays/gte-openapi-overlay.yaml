@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for GTE API
+  version: 1.0.0
+extends: openapi/gte-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: gte
+    x-apievangelist-category: crypto-defi
+    x-apievangelist-auth-model: evm-wallet-signature
+    x-apievangelist-pagination: offset (limit/offset)
+    x-apievangelist-error-envelope: 'ErrorResponse { message }'
+    x-apievangelist-streaming: wss://api-testnet.gte.xyz/ws
+- target: $.info
+  update:
+    x-apievangelist-tags: [DEX, Trading, Market Data, Order Book, Perpetuals, MegaETH, EVM]

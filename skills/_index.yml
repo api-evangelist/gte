@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/gte-openapi-original.yml
+skills:
+- file: gte-market-data.md
+  name: Look up GTE tokens, markets, and order books
+  api: openapi/gte-openapi-original.yml
+  operations: [GetTokens, SearchTokens, GetTokenByAddress, GetMarkets, SearchMarkets, GetMarketByAddress, GetMarketBook, GetMarketCandles, GetMarketTrades]
+- file: gte-place-order.md
+  name: Inspect a user's GTE positions and submit a signed order
+  api: openapi/gte-openapi-original.yml
+  operations: [GetUserPortfolio, GetOpenOrders, GetOrderHistory, GetMarketBook, Exchange]

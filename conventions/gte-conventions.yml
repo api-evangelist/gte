@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/gte-openapi-original.yml
+authentication:
+  style: evm-wallet-signature
+  detail: Public reads are unauthenticated; POST /exchange requires a signed EVM transaction body. See authentication/gte-authentication.yml.
+pagination:
+  style: offset
+  params: [limit, offset]
+  applies_to: [GetTokens, SearchTokens, GetMarkets, SearchMarkets, GetMarketTrades, GetUserLpPositions, GetUserTrades, GetOpenOrders, GetFilledOrders, GetOrderHistory]
+  notes: List endpoints accept limit + offset query parameters for windowing.
+time_filtering:
+  params: [startTime, endTime, interval]
+  applies_to: [GetMarketCandles]
+  notes: Candle endpoints accept startTime/endTime plus an interval (CandleInterval).
+sorting:
+  params: [sortBy, q, marketType, creator, newlyGraduated]
+  notes: Token/market search and list endpoints support filtering (q, marketType, creator, newlyGraduated) and sortBy ordering.
+identifiers:
+  scheme: evm
+  detail: Resources are addressed by on-chain EVM addresses — token_address, market_address, user_address (0x + 40 hex). Transactions are EvmTxnHash (0x + 64 hex).
+error_envelope:
+  shape: '{ "message": string }'
+  schema: ErrorResponse
+  format: plain-json
+  detail: Errors return a flat JSON object with a single required "message" field. Not RFC 9457 problem+json. See errors/gte-problem-types.yml.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: HTTP base path is /v1; WebSocket base path is /ws.
+idempotency:
+  supported: false
+  detail: >-
+    No Idempotency-Key header or parameter is documented in the OpenAPI. Write safety
+    is instead a property of the signed on-chain transaction (nonce-bound) rather
+    than an API-level idempotency contract, so no Idempotency pointer is emitted.
+rate_limiting:
+  documented: false
+  detail: No rate-limit headers or policy are documented in the OpenAPI at this time.
+streaming:
+  websocket: wss://api-testnet.gte.xyz/ws
+  detail: A WebSocket server is advertised in OpenAPI servers[] for real-time market/order data. No AsyncAPI channel catalog is published, so no AsyncAPI artifact is emitted (no fabrication).

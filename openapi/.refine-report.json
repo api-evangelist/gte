@@ -1,0 +1,24 @@
+{
+  "provider": "gte",
+  "sources": [
+    "gte-exchange-api-openapi.yml",
+    "gte-health-api-openapi.yml",
+    "gte-info-api-openapi.yml",
+    "gte-markets-api-openapi.yml",
+    "gte-tokens-api-openapi.yml",
+    "gte-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "gte-exchange-api-openapi.yml",
+    "gte-health-api-openapi.yml",
+    "gte-info-api-openapi.yml",
+    "gte-markets-api-openapi.yml",
+    "gte-tokens-api-openapi.yml",
+    "gte-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

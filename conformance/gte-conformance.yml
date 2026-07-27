@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/gte-openapi-original.yml
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: docs.gte.xyz/openapi.yaml is OpenAPI 3.0.0
+- id: oauth2
+  conforms: false
+  evidence: no oauth2 securityScheme declared
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use a flat {message} ErrorResponse, not application/problem+json
+- id: pagination
+  conforms: true
+  evidence: list operations use limit/offset query parameters
+- id: idempotency
+  conforms: false
+  evidence: no Idempotency-Key header/param documented
+- id: json-api
+  conforms: false
+- id: fapi
+  conforms: false
+- id: evm-onchain-settlement
+  conforms: true
+  evidence: resources addressed by EVM addresses; POST /exchange settles via signed EVM transactions on MegaETH
+notes: >-
+  Derived standards conformance only. GTE publishes no formal compliance program
+  (SOC 2 / ISO 27001 / PCI / HIPAA / FedRAMP) — it is a non-custodial on-chain DEX,
+  so no Compliance pointer is emitted.

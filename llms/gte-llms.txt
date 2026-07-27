@@ -1,0 +1,34 @@
+# GTE Docs
+
+## Docs
+
+- [About GTE](https://docs.gte.xyz/home/overview/about-gte.md)
+- [Builder Codes](https://docs.gte.xyz/home/overview/builder-codes.md)
+- [Core Contributors](https://docs.gte.xyz/home/overview/core-contributors.md)
+- [GTE Turbo](https://docs.gte.xyz/home/overview/gte-turbo.md)
+- [Special Economic Zones (SEZs)](https://docs.gte.xyz/home/overview/sezs.md)
+- [Vaults](https://docs.gte.xyz/home/overview/vaults.md)
+- [Brand Kit](https://docs.gte.xyz/home/trading/branding-kit.md)
+- [Auto-Deleveraging (ADL)](https://docs.gte.xyz/home/trading/mechanics/adl.md)
+- [Trading Fees](https://docs.gte.xyz/home/trading/mechanics/fees.md)
+- [Funding](https://docs.gte.xyz/home/trading/mechanics/funding.md)
+- [Liquidations](https://docs.gte.xyz/home/trading/mechanics/liquidations.md)
+- [Margin Tiers](https://docs.gte.xyz/home/trading/mechanics/margin-tiers.md)
+- [Margining](https://docs.gte.xyz/home/trading/mechanics/margining.md)
+- [Market Making](https://docs.gte.xyz/home/trading/mechanics/market-making.md)
+- [Order Types & Matching](https://docs.gte.xyz/home/trading/mechanics/order-types.md)
+- [PnL and Account Value](https://docs.gte.xyz/home/trading/mechanics/pnl-and-account-value.md)
+- [Mark and Index Price](https://docs.gte.xyz/home/trading/mechanics/price-marking.md)
+- [Self-Trade Prevention](https://docs.gte.xyz/home/trading/mechanics/self-trade-protection.md)
+- [Take Profit and Stop Loss](https://docs.gte.xyz/home/trading/mechanics/tp-sl.md)
+- [Trading View](https://docs.gte.xyz/home/trading/trading-view.md)
+
+## OpenAPI Specs
+
+- [openapi](https://docs.gte.xyz/openapi.yaml)
+
+## Optional
+
+- [GitHub](https://github.com/Liquid-Labs-Inc)
+- [Community](https://discord.com/invite/gte-xyz)
+- [X](https://x.com/GTE_XYZ)
