@@ -1,0 +1,455 @@
+{
+  "item": [
+    {
+      "id": "e0c439bc-2efe-4c54-820e-6ba7bb2c8b1b",
+      "name": "Tokens",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd885801-d1a6-4bb2-a8f0-b8924c4a1e78",
+          "name": "Get list of tokens supported on GTE",
+          "request": {
+            "name": "Get list of tokens supported on GTE",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creator",
+                  "value": "<string>",
+                  "description": "Returns assets created by the given user address"
+                },
+                {
+                  "disabled": false,
+                  "key": "marketType",
+                  "value": "<string>",
+                  "description": "Filters assets by the given market type"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b1c0c03-c029-451d-8e2e-764654a7bdd2",
+              "name": "List of assets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "marketType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"<string>\",\n    \"decimals\": 1182,\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"totalSupply\": 80.84531726608391,\n    \"logoUri\": \"string\",\n    \"priceUsd\": 1893.9295893224116,\n    \"volume1HrUsd\": 4910.033548643576,\n    \"volume24HrUsd\": 4361.040372295532,\n    \"marketCapUsd\": 2464.537666019818\n  },\n  {\n    \"address\": \"<string>\",\n    \"decimals\": 5394,\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"totalSupply\": 1098.4553524667606,\n    \"logoUri\": \"string\",\n    \"priceUsd\": 4731.652373294472,\n    \"volume1HrUsd\": 5177.954785842023,\n    \"volume24HrUsd\": 4387.469424617712,\n    \"marketCapUsd\": 9546.610511804685\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2315f7b8-fbbe-4377-b266-6f9b7666ee1f",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "marketType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cbcc028-8831-4c3b-8639-4cd4132e63a5",
+          "name": "Search tokens based on name or symbol",
+          "request": {
+            "name": "Search tokens based on name or symbol",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42841285-b283-4666-86f0-807a025b7e8d",
+              "name": "List of tokens",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"<string>\",\n    \"decimals\": 4033,\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"totalSupply\": 1935.4075488925891,\n    \"logoUri\": \"string\",\n    \"priceUsd\": 4788.294082232184,\n    \"volume1HrUsd\": 5017.147582695362,\n    \"volume24HrUsd\": 1038.416964502189,\n    \"marketCapUsd\": 2165.579394104932\n  },\n  {\n    \"address\": \"<string>\",\n    \"decimals\": 4484,\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"totalSupply\": 3278.7359853216435,\n    \"logoUri\": \"string\",\n    \"priceUsd\": 7048.405580681738,\n    \"volume1HrUsd\": 7252.579162678165,\n    \"volume24HrUsd\": 8625.616721353343,\n    \"marketCapUsd\": 3097.838257945963\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "321dabde-c4aa-45f0-b05e-0f40251b9dc6",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b63881b-d009-4c8b-b73a-733e28c3dc84",
+          "name": "Get token metadata by address",
+          "request": {
+            "name": "Get token metadata by address",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                ":token_address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f8ac656-1daf-4a34-a590-4cf09535b3d4",
+              "name": "Token details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":token_address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"<string>\",\n  \"createdAt\": 6135,\n  \"creator\": \"<string>\",\n  \"decimals\": 5589,\n  \"description\": \"string\",\n  \"displayMarkets\": [\n    {\n      \"marketType\": \"<string>\",\n      \"marketAddress\": \"<string>\"\n    },\n    {\n      \"marketType\": \"<string>\",\n      \"marketAddress\": \"<string>\"\n    }\n  ],\n  \"logoUri\": \"string\",\n  \"marketCapUsd\": 5198.08745345905,\n  \"name\": \"string\",\n  \"numHolders\": 7551,\n  \"priceUsd\": 1284.1957280538775,\n  \"socials\": {\n    \"website\": \"string\",\n    \"discord\": \"string\",\n    \"telegram\": \"string\",\n    \"x\": \"string\"\n  },\n  \"symbol\": \"string\",\n  \"totalSupply\": 6226.708414725208,\n  \"volume1HrUsd\": 1460.653840557743,\n  \"volume24HrUsd\": 7310.220808313368\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afbb0e79-6ead-4b79-8bff-2c958676b386",
+              "name": "Token not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":token_address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-testnet.gte.xyz/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "437376b9-b04a-4f21-9619-243e75cb905b",
+    "name": "GTE Exchange Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for GTE trading and historical data\n\nContact Support:\n Name: API Support\n Email: support@liquidlabs.inc",
+      "type": "text/plain"
+    }
+  }
+}

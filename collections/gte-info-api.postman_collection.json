@@ -1,0 +1,99 @@
+{
+  "item": [
+    {
+      "id": "0760b6ef-e591-4e7b-a155-9dda24adc478",
+      "name": "Info",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c5d6a25-745e-4999-997e-a7d51899e249",
+          "name": "Get GTE info",
+          "request": {
+            "name": "Get GTE info",
+            "description": {},
+            "url": {
+              "path": [
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05456312-5482-45f5-8505-bbd0ad42f556",
+              "name": "GTE info response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalMarkets\": 6126,\n  \"launchedTokens\": 9777,\n  \"volume24HrUsd\": 9597.167495838969,\n  \"volumeTotalUsd\": 9991.261520337588\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-testnet.gte.xyz/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "459435f2-8f7d-49e4-a927-69eca86e3bda",
+    "name": "GTE Exchange Info API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for GTE trading and historical data\n\nContact Support:\n Name: API Support\n Email: support@liquidlabs.inc",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "item": [
+    {
+      "id": "27e374e2-acf6-48e8-bf12-d1d505642e64",
+      "name": "Health",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84b5a230-7b76-4d36-914d-ae320a517ec6",
+          "name": "Get API health status",
+          "request": {
+            "name": "Get API health status",
+            "description": {},
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7d7da60-ab2c-48ea-9ec9-882fe04f82c7",
+              "name": "Health check response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"timestamp\": 6779\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-testnet.gte.xyz/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "edd7ab9e-517c-4a63-a084-f5598a1566c4",
+    "name": "GTE Exchange Health API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for GTE trading and historical data\n\nContact Support:\n Name: API Support\n Email: support@liquidlabs.inc",
+      "type": "text/plain"
+    }
+  }
+}

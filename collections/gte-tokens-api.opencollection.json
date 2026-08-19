@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GTE Exchange Tokens API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of tokens supported on GTE",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/tokens",
+            "params": [
+              {
+                "name": "creator",
+                "value": "",
+                "type": "query",
+                "description": "Returns assets created by the given user address"
+              },
+              {
+                "name": "marketType",
+                "value": "",
+                "type": "query",
+                "description": "Filters assets by the given market type"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get list of tokens supported on GTE"
+        },
+        {
+          "info": {
+            "name": "Search tokens based on name or symbol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/tokens/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search tokens based on name or symbol"
+        },
+        {
+          "info": {
+            "name": "Get token metadata by address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/tokens/:token_address",
+            "params": [
+              {
+                "name": "token_address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get token metadata by address"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

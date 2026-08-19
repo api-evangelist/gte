@@ -1,0 +1,196 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GTE Exchange Markets API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/markets",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "marketType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by market type. If empty, all market types will be returned"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort markets in descending order"
+              },
+              {
+                "name": "tokenAddress",
+                "value": "",
+                "type": "query",
+                "description": "Filter markets by the specified token address"
+              },
+              {
+                "name": "newlyGraduated",
+                "value": "",
+                "type": "query",
+                "description": "Returns newly graduated markets. Ignores `sortBy` if `true`"
+              }
+            ]
+          },
+          "docs": "Get list of markets"
+        },
+        {
+          "info": {
+            "name": "Search markets based on name or symbol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/markets/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search markets based on name or symbol"
+        },
+        {
+          "info": {
+            "name": "Get market by address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/markets/:market_address",
+            "params": [
+              {
+                "name": "market_address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get market by address"
+        },
+        {
+          "info": {
+            "name": "Get candles for a market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/markets/:market_address/candles",
+            "params": [
+              {
+                "name": "market_address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "If not supplied, the current time will be used"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get candles for a market"
+        },
+        {
+          "info": {
+            "name": "Get trades for a market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/markets/:market_address/trades",
+            "params": [
+              {
+                "name": "market_address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get trades for a market"
+        },
+        {
+          "info": {
+            "name": "Get L2 orderbook for a market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/markets/:market_address/book",
+            "params": [
+              {
+                "name": "market_address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get L2 orderbook for a market"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

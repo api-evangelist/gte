@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GTE Exchange Users API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get LP positions for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/users/:user_address/lppositions",
+            "params": [
+              {
+                "name": "user_address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get LP positions for a user"
+        },
+        {
+          "info": {
+            "name": "Get user's portfolio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/users/:user_address/portfolio",
+            "params": [
+              {
+                "name": "user_address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get user's portfolio"
+        },
+        {
+          "info": {
+            "name": "Get user trades.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/users/:user_address/trades",
+            "params": [
+              {
+                "name": "user_address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets user trades on GTE. Returns all trades from all markets if `market_address` is empty."
+        },
+        {
+          "info": {
+            "name": "Get open orders for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/users/:user_address/open_orders",
+            "params": [
+              {
+                "name": "user_address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market_address",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get open orders for a user"
+        },
+        {
+          "info": {
+            "name": "Get filled orders for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/users/:user_address/filled_orders",
+            "params": [
+              {
+                "name": "user_address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market_address",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get filled orders for a user"
+        },
+        {
+          "info": {
+            "name": "Get order history for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/users/:user_address/order_history",
+            "params": [
+              {
+                "name": "user_address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "market_address",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get order history for a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

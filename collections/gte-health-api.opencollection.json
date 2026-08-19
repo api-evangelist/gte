@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GTE Exchange Health API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API health status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-testnet.gte.xyz/v1/health"
+          },
+          "docs": "Get API health status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

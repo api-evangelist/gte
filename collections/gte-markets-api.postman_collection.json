@@ -1,0 +1,1148 @@
+{
+  "item": [
+    {
+      "id": "2bee0ae5-ab42-46af-87a3-0f5adbcd3677",
+      "name": "Markets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5de33df8-8341-4bfe-8897-fa93e3efc0cc",
+          "name": "Get list of markets",
+          "request": {
+            "name": "Get list of markets",
+            "description": {},
+            "url": {
+              "path": [
+                "markets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "marketType",
+                  "value": "<string>",
+                  "description": "Filter by market type. If empty, all market types will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "marketCap",
+                  "description": "Sort markets in descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenAddress",
+                  "value": "<string>",
+                  "description": "Filter markets by the specified token address"
+                },
+                {
+                  "disabled": false,
+                  "key": "newlyGraduated",
+                  "value": "false",
+                  "description": "Returns newly graduated markets. Ignores `sortBy` if `true`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bfac043a-cb6f-4d6a-9671-c2198896cc20",
+              "name": "List of markets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "marketType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "marketCap"
+                    },
+                    {
+                      "key": "tokenAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "newlyGraduated",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"marketType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"baseToken\": {\n      \"address\": \"<string>\",\n      \"decimals\": 2211,\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"totalSupply\": 203.76464272478856,\n      \"logoUri\": \"string\",\n      \"priceUsd\": 1661.7508613887055,\n      \"volume1HrUsd\": 3708.8316746156,\n      \"volume24HrUsd\": 1760.8075785321464,\n      \"marketCapUsd\": 4136.231063771332\n    },\n    \"quoteToken\": {\n      \"address\": \"<string>\",\n      \"decimals\": 4566,\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"totalSupply\": 1831.3181256865662,\n      \"logoUri\": \"string\",\n      \"priceUsd\": 6223.925796171059,\n      \"volume1HrUsd\": 8761.414583790225,\n      \"volume24HrUsd\": 417.97821239835775,\n      \"marketCapUsd\": 3817.8282011627416\n    },\n    \"price\": 2023.071591942145,\n    \"priceUsd\": 8609.855185617063,\n    \"volume24HrUsd\": 9820.213624331827,\n    \"volume1HrUsd\": 9661.971934882047,\n    \"marketCapUsd\": 864.7647355305832,\n    \"createdAt\": 1888,\n    \"tvlUsd\": 4384.363242449626\n  },\n  {\n    \"marketType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"baseToken\": {\n      \"address\": \"<string>\",\n      \"decimals\": 4263,\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"totalSupply\": 6554.042803318629,\n      \"logoUri\": \"string\",\n      \"priceUsd\": 2845.214302358635,\n      \"volume1HrUsd\": 905.5600189581014,\n      \"volume24HrUsd\": 8829.84892680461,\n      \"marketCapUsd\": 560.341151944348\n    },\n    \"quoteToken\": {\n      \"address\": \"<string>\",\n      \"decimals\": 3172,\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"totalSupply\": 1874.1103392294533,\n      \"logoUri\": \"string\",\n      \"priceUsd\": 2171.676204222197,\n      \"volume1HrUsd\": 6012.708875475407,\n      \"volume24HrUsd\": 4948.404518162286,\n      \"marketCapUsd\": 8221.760048352735\n    },\n    \"price\": 793.4192170681908,\n    \"priceUsd\": 2449.063752812649,\n    \"volume24HrUsd\": 5144.280672237438,\n    \"volume1HrUsd\": 1547.5161374886404,\n    \"marketCapUsd\": 6504.733765740321,\n    \"createdAt\": 9776,\n    \"tvlUsd\": 1283.12111413892\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d64ffcf-7c9f-4db7-a4f5-01dfef000e91",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "marketType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "marketCap"
+                    },
+                    {
+                      "key": "tokenAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "newlyGraduated",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf1b1842-8f8e-442b-9cd0-9817a6dc0b31",
+          "name": "Search markets based on name or symbol",
+          "request": {
+            "name": "Search markets based on name or symbol",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96db1532-a96b-43b0-9ebc-8d43932f76c2",
+              "name": "List of markets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"marketType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"baseToken\": {\n      \"address\": \"<string>\",\n      \"decimals\": 8409,\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"totalSupply\": 1549.1644493021684,\n      \"logoUri\": \"string\",\n      \"priceUsd\": 1280.632098707808,\n      \"volume1HrUsd\": 5820.809390264615,\n      \"volume24HrUsd\": 4437.4747622626255,\n      \"marketCapUsd\": 5169.674360643155\n    },\n    \"quoteToken\": {\n      \"address\": \"<string>\",\n      \"decimals\": 8968,\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"totalSupply\": 8572.808815205846,\n      \"logoUri\": \"string\",\n      \"priceUsd\": 2111.5642438016757,\n      \"volume1HrUsd\": 2630.1454953465154,\n      \"volume24HrUsd\": 3955.6630389074608,\n      \"marketCapUsd\": 9515.226796608105\n    },\n    \"price\": 7680.890988486273,\n    \"priceUsd\": 704.3269301257149,\n    \"volume24HrUsd\": 7360.2976308426505,\n    \"volume1HrUsd\": 6220.419703261524,\n    \"marketCapUsd\": 2046.492256193414,\n    \"createdAt\": 6263,\n    \"tvlUsd\": 9461.884560620278\n  },\n  {\n    \"marketType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"baseToken\": {\n      \"address\": \"<string>\",\n      \"decimals\": 6365,\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"totalSupply\": 9894.830237674385,\n      \"logoUri\": \"string\",\n      \"priceUsd\": 8227.822008728199,\n      \"volume1HrUsd\": 2376.215119032392,\n      \"volume24HrUsd\": 8828.681997671454,\n      \"marketCapUsd\": 8351.4740464292\n    },\n    \"quoteToken\": {\n      \"address\": \"<string>\",\n      \"decimals\": 8676,\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"totalSupply\": 1431.4085800116904,\n      \"logoUri\": \"string\",\n      \"priceUsd\": 5423.243909599594,\n      \"volume1HrUsd\": 4600.591601446948,\n      \"volume24HrUsd\": 4108.9815487941805,\n      \"marketCapUsd\": 4060.081824920266\n    },\n    \"price\": 7053.709344481606,\n    \"priceUsd\": 7862.8336650558995,\n    \"volume24HrUsd\": 2069.7284544495355,\n    \"volume1HrUsd\": 1454.7514224735992,\n    \"marketCapUsd\": 5507.861507023328,\n    \"createdAt\": 1405,\n    \"tvlUsd\": 3976.8446644169067\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3c5ad4a-0bb8-4a95-acfe-0eebc3ece89d",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1d625b3-af5d-487a-81b1-a4f35ae69cd6",
+          "name": "Get market by address",
+          "request": {
+            "name": "Get market by address",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                ":market_address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "market_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbd5de9c-7642-4b93-82b9-a9cf7ead881c",
+              "name": "Market",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"marketType\": \"<string>\",\n  \"address\": \"<string>\",\n  \"baseToken\": {\n    \"address\": \"<string>\",\n    \"decimals\": 1888,\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"totalSupply\": 392.0976508669638,\n    \"logoUri\": \"string\",\n    \"priceUsd\": 6071.470805077283,\n    \"volume1HrUsd\": 3229.438910827623,\n    \"volume24HrUsd\": 7561.692534535039,\n    \"marketCapUsd\": 8358.014332249812\n  },\n  \"quoteToken\": {\n    \"address\": \"<string>\",\n    \"decimals\": 7955,\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"totalSupply\": 8875.930892907441,\n    \"logoUri\": \"string\",\n    \"priceUsd\": 455.83992897107464,\n    \"volume1HrUsd\": 6547.87107208329,\n    \"volume24HrUsd\": 1375.0275326536298,\n    \"marketCapUsd\": 6590.039142641965\n  },\n  \"price\": 3227.5777097576565,\n  \"priceUsd\": 64.33799248386052,\n  \"volume24HrUsd\": 3913.0845514772295,\n  \"volume1HrUsd\": 8769.178105318857,\n  \"marketCapUsd\": 5151.906949707294,\n  \"createdAt\": 9580,\n  \"tvlUsd\": 1845.9535125572336\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7887fc97-f8d2-4132-b6f6-ce547594a0e2",
+              "name": "Market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a6831c4-528b-42a4-813f-302ea6535516",
+          "name": "Get candles for a market",
+          "request": {
+            "name": "Get candles for a market",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                ":market_address",
+                "candles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<long>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<long>",
+                  "description": "If not supplied, the current time will be used"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "500"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "market_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4133ecef-701b-4a45-85a7-245a5d66dab0",
+              "name": "List of candles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address",
+                    "candles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": 8707,\n    \"open\": 5643.769647534561,\n    \"high\": 7526.703152710778,\n    \"low\": 117.5804925692947,\n    \"close\": 5925.206501650061,\n    \"volume\": 523.1792949534886\n  },\n  {\n    \"timestamp\": 8955,\n    \"open\": 6161.05912058601,\n    \"high\": 6454.227488662431,\n    \"low\": 8158.565407742609,\n    \"close\": 993.292117544613,\n    \"volume\": 4238.846538306708\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b45cbf21-7692-44cd-bf42-385ea24a347c",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address",
+                    "candles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dee6b6b-123f-4a92-97e7-c38b2e9741b8",
+              "name": "Market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address",
+                    "candles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ceb84d2f-d6db-4e03-8890-1417ca16cabf",
+          "name": "Get trades for a market",
+          "request": {
+            "name": "Get trades for a market",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                ":market_address",
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "market_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fef36e58-e518-4d2e-80e7-96341064a66f",
+              "name": "List of trades",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": 3783,\n    \"txnHash\": \"0x85B74e51A7928418dcb7C5DE074819F65408e9Fe215F0E1f447F9CafBddBAA4A\",\n    \"maker\": \"<string>\",\n    \"taker\": \"<string>\",\n    \"price\": 6840.2236473175135,\n    \"size\": 2484.672403018642,\n    \"side\": \"sell\",\n    \"marketAddress\": \"<string>\"\n  },\n  {\n    \"timestamp\": 7983,\n    \"txnHash\": \"0xCbD708c561fcF1bE0C8cFaCee73d8deCB1ffCAf7F71ccb1D1188e3aB1a42CA5d\",\n    \"maker\": \"<string>\",\n    \"taker\": \"<string>\",\n    \"price\": 5849.51028186937,\n    \"size\": 672.2634472649136,\n    \"side\": \"sell\",\n    \"marketAddress\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42b3a469-429c-485d-857f-7d7131f6ab6d",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29d5f208-21b9-4367-8d1b-2f83dffd81c2",
+              "name": "Market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ab975b5-43da-4d75-85bb-d291fcfc48a9",
+          "name": "Get L2 orderbook for a market",
+          "request": {
+            "name": "Get L2 orderbook for a market",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                ":market_address",
+                "book"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "market_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6807400a-76a4-4e01-8ad7-3529ac754cdb",
+              "name": "L2 orderbook",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address",
+                    "book"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asks\": [\n    {\n      \"price\": \"string\",\n      \"size\": \"string\",\n      \"number\": 5898.925510209408\n    },\n    {\n      \"price\": \"string\",\n      \"size\": \"string\",\n      \"number\": 2416.37563885874\n    }\n  ],\n  \"bids\": [\n    {\n      \"price\": \"string\",\n      \"size\": \"string\",\n      \"number\": 2651.047654043561\n    },\n    {\n      \"price\": \"string\",\n      \"size\": \"string\",\n      \"number\": 1510.747617607061\n    }\n  ],\n  \"timestamp\": 8133\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "684ed8d7-3f95-49c9-b2ea-8f6b3afa4b34",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address",
+                    "book"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09ccb0f6-562a-416a-a248-3c825b9bdbd2",
+              "name": "Market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":market_address",
+                    "book"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "market_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-testnet.gte.xyz/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "86839c35-ed0e-4258-b693-7020ca821122",
+    "name": "GTE Exchange Markets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for GTE trading and historical data\n\nContact Support:\n Name: API Support\n Email: support@liquidlabs.inc",
+      "type": "text/plain"
+    }
+  }
+}

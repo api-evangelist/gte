@@ -1,0 +1,1173 @@
+{
+  "item": [
+    {
+      "id": "74711361-5530-4c2b-940c-7b7f5312b9a3",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1068cb34-b316-484c-961e-ee08afaa478b",
+          "name": "Get LP positions for a user",
+          "request": {
+            "name": "Get LP positions for a user",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":user_address",
+                "lppositions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2ac1491-71e9-4754-9226-18896f02cc2a",
+              "name": "List of user's LP positions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "lppositions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"market\": {\n      \"marketType\": \"perps\",\n      \"address\": \"<string>\",\n      \"baseToken\": {\n        \"address\": \"<string>\",\n        \"decimals\": 9617,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"totalSupply\": 9729.216983802638,\n        \"logoUri\": \"string\",\n        \"priceUsd\": 2162.0734506104354,\n        \"volume1HrUsd\": 3377.47560273726,\n        \"volume24HrUsd\": 2053.935947077854,\n        \"marketCapUsd\": 4224.9627525321675\n      },\n      \"quoteToken\": {\n        \"address\": \"<string>\",\n        \"decimals\": 982,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"totalSupply\": 4539.803154520207,\n        \"logoUri\": \"string\",\n        \"priceUsd\": 5370.554992223066,\n        \"volume1HrUsd\": 7641.928927776758,\n        \"volume24HrUsd\": 1042.9839586247192,\n        \"marketCapUsd\": 4492.723045860249\n      },\n      \"price\": 8432.844611385652,\n      \"priceUsd\": 1862.312573587348,\n      \"volume24HrUsd\": 5219.309851582637,\n      \"volume1HrUsd\": 6401.882979354061,\n      \"marketCapUsd\": 8435.959950176113,\n      \"createdAt\": 5422,\n      \"tvlUsd\": 8446.454123255955\n    },\n    \"balance\": 3432.9705097168826,\n    \"shareOfPool\": 8207.520607108963,\n    \"apr\": 740.6864717520989,\n    \"token0Amount\": \"string\",\n    \"token1Amount\": \"string\"\n  },\n  {\n    \"market\": {\n      \"marketType\": \"bonding-curve\",\n      \"address\": \"<string>\",\n      \"baseToken\": {\n        \"address\": \"<string>\",\n        \"decimals\": 8290,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"totalSupply\": 2938.4543151238827,\n        \"logoUri\": \"string\",\n        \"priceUsd\": 8715.230663640248,\n        \"volume1HrUsd\": 2156.4919765216505,\n        \"volume24HrUsd\": 6735.464836310525,\n        \"marketCapUsd\": 9127.306655357592\n      },\n      \"quoteToken\": {\n        \"address\": \"<string>\",\n        \"decimals\": 475,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"totalSupply\": 9160.160581234004,\n        \"logoUri\": \"string\",\n        \"priceUsd\": 5636.899364889503,\n        \"volume1HrUsd\": 9815.612267728655,\n        \"volume24HrUsd\": 6760.260272432147,\n        \"marketCapUsd\": 6239.893856082926\n      },\n      \"price\": 9676.228476813767,\n      \"priceUsd\": 1567.620348556853,\n      \"volume24HrUsd\": 7554.400754601152,\n      \"volume1HrUsd\": 2295.46617762884,\n      \"marketCapUsd\": 1892.0913841340937,\n      \"createdAt\": 8025,\n      \"tvlUsd\": 899.8599882641367\n    },\n    \"balance\": 7536.292881587637,\n    \"shareOfPool\": 6439.974735401207,\n    \"apr\": 1904.315640028793,\n    \"token0Amount\": \"string\",\n    \"token1Amount\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96df2d24-897b-4b80-b37b-a09213f67437",
+              "name": "User not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "lppositions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c8d8d02-fe87-47a5-9f7c-9183e165d2b1",
+          "name": "Get user's portfolio",
+          "request": {
+            "name": "Get user's portfolio",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":user_address",
+                "portfolio"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90f3114f-5447-4a64-94f0-0a840c10198e",
+              "name": "User's portfolio",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "portfolio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tokens\": [\n    {\n      \"token\": {\n        \"address\": \"<string>\",\n        \"decimals\": 817,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"totalSupply\": 8326.102772209759,\n        \"logoUri\": \"string\",\n        \"priceUsd\": 3830.31753459813,\n        \"volume1HrUsd\": 4907.785495861885,\n        \"volume24HrUsd\": 1118.1904674536324,\n        \"marketCapUsd\": 6643.485840750352\n      },\n      \"balance\": \"string\",\n      \"balanceUsd\": 1591.7786783848553,\n      \"realizedPnlUsd\": 4830.532588570157,\n      \"unrealizedPnlUsd\": 3317.6208313956745\n    },\n    {\n      \"token\": {\n        \"address\": \"<string>\",\n        \"decimals\": 3133,\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"totalSupply\": 8294.059247568333,\n        \"logoUri\": \"string\",\n        \"priceUsd\": 4263.06685567086,\n        \"volume1HrUsd\": 1410.6679955561551,\n        \"volume24HrUsd\": 6509.981973795319,\n        \"marketCapUsd\": 8776.140719408742\n      },\n      \"balance\": \"string\",\n      \"balanceUsd\": 6567.10049943099,\n      \"realizedPnlUsd\": 9585.835008372325,\n      \"unrealizedPnlUsd\": 5889.4820936221695\n    }\n  ],\n  \"totalUsdBalance\": 7604.271748898116\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbc14fa8-5dc0-4341-99f3-cc1c3c40b8b4",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "portfolio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76d90e15-9cf9-4065-8162-ed7d58458fce",
+              "name": "User not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "portfolio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b6d126b-2b52-4da1-b9c9-a35077e570f4",
+          "name": "Get user trades.",
+          "request": {
+            "name": "Get user trades.",
+            "description": {
+              "content": "Gets user trades on GTE. Returns all trades from all markets if `market_address` is empty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_address",
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "market_address",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0bbf8310-decf-4cf4-8a15-8d20323d0288",
+              "name": "List of user's trades",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": 9417,\n    \"txnHash\": \"0xc49aca86Fd8a8fd50Abd5aeDE437de6135EE23b8Bbcaac1C1eBd7C7c53D564C1\",\n    \"maker\": \"<string>\",\n    \"taker\": \"<string>\",\n    \"price\": 437.9540906165913,\n    \"size\": 3510.8286491141293,\n    \"side\": \"buy\",\n    \"marketAddress\": \"<string>\"\n  },\n  {\n    \"timestamp\": 1625,\n    \"txnHash\": \"0xbb8707E1cB2C4AfECcC1b61CEf0D8EdBa3Be1Eeb859e2CC66bDfc4dcE5e97386\",\n    \"maker\": \"<string>\",\n    \"taker\": \"<string>\",\n    \"price\": 6377.6741566746605,\n    \"size\": 9417.291000355404,\n    \"side\": \"sell\",\n    \"marketAddress\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34fc4cf3-b8b5-4bb3-a04d-f82e62182eaf",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eff4b682-cd16-436e-8757-9c6d33be7378",
+              "name": "User or market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69ac47ee-23e5-422e-9cc6-77afbf03934c",
+          "name": "Get open orders for a user",
+          "request": {
+            "name": "Get open orders for a user",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":user_address",
+                "open_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "market_address",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a759858-ca0c-4a5e-8700-71876f65af0e",
+              "name": "List of user's open orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "open_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"limitPrice\": \"string\",\n    \"marketAddress\": \"<string>\",\n    \"orderId\": \"string\",\n    \"originalSize\": \"string\",\n    \"placedAt\": 3784,\n    \"side\": \"ask\",\n    \"sizeFilled\": \"string\"\n  },\n  {\n    \"limitPrice\": \"string\",\n    \"marketAddress\": \"<string>\",\n    \"orderId\": \"string\",\n    \"originalSize\": \"string\",\n    \"placedAt\": 3057,\n    \"side\": \"ask\",\n    \"sizeFilled\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02a8ebff-4078-4b83-bdf2-6e96e2215558",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "open_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ff4b21e-8e3f-422f-ac12-d236218afcb6",
+              "name": "User or market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "open_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a169c40-f811-4388-b7d0-07f78fce534e",
+          "name": "Get filled orders for a user",
+          "request": {
+            "name": "Get filled orders for a user",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":user_address",
+                "filled_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "market_address",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c36a555-ebb5-4b79-98c5-7a2abab76ed9",
+              "name": "List of user's filled orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "filled_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"filledAt\": 7053,\n    \"marketAddress\": \"<string>\",\n    \"orderId\": \"string\",\n    \"price\": \"string\",\n    \"side\": \"ask\",\n    \"sizeFilled\": \"string\",\n    \"txnHash\": \"0xbCeBA4AEfDB1acfb23FD23099B13c71a7EbAaCFc8FEcdE94eEbeacA5De2d3fBC\"\n  },\n  {\n    \"filledAt\": 9494,\n    \"marketAddress\": \"<string>\",\n    \"orderId\": \"string\",\n    \"price\": \"string\",\n    \"side\": \"ask\",\n    \"sizeFilled\": \"string\",\n    \"txnHash\": \"0x3e4f6Ba041b49D09aADEb8d0aD07CeB95EA85b2c59218edcf8e320b835Fb387E\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aed6d055-b4e5-47c8-8e0d-aa49ab802acd",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "filled_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f125009a-afe9-40b3-8ca0-8ffcaa368f23",
+              "name": "User or market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "filled_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed5ca99d-38d6-45b2-b700-784584602f92",
+          "name": "Get order history for a user",
+          "request": {
+            "name": "Get order history for a user",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":user_address",
+                "order_history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "market_address",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a0823c0-a07e-4f19-83c7-979c5b960648",
+              "name": "List of user's order history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "order_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"limitPrice\": \"string\",\n    \"marketAddress\": \"<string>\",\n    \"orderId\": \"string\",\n    \"orderType\": \"limit\",\n    \"originalSize\": \"string\",\n    \"placedAt\": 7905,\n    \"side\": \"bid\"\n  },\n  {\n    \"limitPrice\": \"string\",\n    \"marketAddress\": \"<string>\",\n    \"orderId\": \"string\",\n    \"orderType\": \"limit\",\n    \"originalSize\": \"string\",\n    \"placedAt\": 4227,\n    \"side\": \"ask\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9df3bf67-96ec-4b78-bdf3-81e57f16c9ab",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "order_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54880844-8f81-4bb6-a6d9-0c197152462b",
+              "name": "User or market not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_address",
+                    "order_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "market_address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-testnet.gte.xyz/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e583cb43-2f67-4d0d-9eab-e7481bc13982",
+    "name": "GTE Exchange Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for GTE trading and historical data\n\nContact Support:\n Name: API Support\n Email: support@liquidlabs.inc",
+      "type": "text/plain"
+    }
+  }
+}

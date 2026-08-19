@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GTE Exchange API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exchange",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Post orders and trades to GTE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-testnet.gte.xyz/v1/exchange",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint allows you post orders and trades to GTE. Take a look at the [GTE Python SDK](https://github.com/liquid-labs-inc/gte-python-sdk) on how to construct the transaction body."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
