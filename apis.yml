@@ -110,6 +110,8 @@ apis:
   humanURL: https://docs.gte.xyz
   baseURL: https://api-testnet.gte.xyz/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
