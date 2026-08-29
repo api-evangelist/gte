@@ -10,6 +10,18 @@ description: >-
   trades, order books, and per-wallet portfolio/order data, plus a signed POST /exchange
   endpoint for submitting orders and trades. An official Python SDK (gte-py) constructs the
   signed transaction bodies. GTE is developed by Liquid Labs and backed by Paradigm.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
