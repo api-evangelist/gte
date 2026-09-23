@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: GTE Exchange API
   version: 0.1.0
@@ -21,7 +21,7 @@ paths:
       - Exchange
       operationId: Exchange
       summary: Post orders and trades to GTE
-      description: This endpoint allows you post orders and trades to GTE. Take a look at the [GTE Python SDK](https://github.com/liquid-labs-inc/gte-python-sdk) on how to construct the transaction body.
+      description: This endpoint allows you post orders and trades to GTE. Take a look at the GTE Python SDK on how to construct the transaction body.
       requestBody:
         required: true
         content:

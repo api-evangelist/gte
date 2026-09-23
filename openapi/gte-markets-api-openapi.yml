@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: GTE Exchange Markets API
+  title: GTE Markets API
   version: 0.1.0
   description: API for GTE trading and historical data
   contact:
@@ -277,28 +277,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    GetMarketListResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Market'
-    GetMarketBookResponse:
-      $ref: '#/components/schemas/Book'
-    BookLevel:
-      type: object
-      required:
-      - price
-      - size
-      - number
-      properties:
-        price:
-          type: string
-          description: Price of the level
-        size:
-          type: string
-          description: Size of the level
-        number:
-          type: number
-          description: Number of orders at the level
     Market:
       type: object
       required:
@@ -346,37 +324,50 @@ components:
           format: double
           description: Market cap of the market in USD
         createdAt:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int64
           description: Timestamp of when the market was deployed in UTC millis
-          nullable: true
         tvlUsd:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
           format: double
           description: TVL of the market in Usd. Null if not applicable.
-    TradeSide:
-      type: string
-      enum:
-      - buy
-      - sell
-      description: Side of the trade
-    EvmTxnHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
-      description: EVM transaction hash
-    MarketType:
-      type: string
-      enum:
-      - bonding-curve
-      - amm
-      - clob-spot
-      - perps
-      description: Type of the market
     GetMarketCandlesResponse:
       type: array
       items:
         $ref: '#/components/schemas/Candle'
+    CandleInterval:
+      type: string
+      enum:
+      - 1s
+      - 15s
+      - 30s
+      - 1m
+      - 2m
+      - 3m
+      - 5m
+      - 10m
+      - 15m
+      - 20m
+      - 30m
+      - 1h
+      - 4h
+      - 1d
+      - 1w
+      description: Interval of the candle
+    GetTradeListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Trade'
+    GetMarketListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Market'
+    GetMarketBookResponse:
+      $ref: '#/components/schemas/Book'
     Candle:
       type: object
       required:
@@ -411,18 +402,6 @@ components:
           type: number
           format: double
           description: Volume of the candle (in base asset)
-    ErrorResponse:
-      type: object
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: Error message
-    EvmAddress:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      description: EVM address
     Trade:
       type: object
       description: Trades in Launchpad and AMM markets.
@@ -463,25 +442,30 @@ components:
         side:
           $ref: '#/components/schemas/TradeSide'
           description: Side of the trade by the taker
-    CandleInterval:
+    Book:
+      type: object
+      required:
+      - asks
+      - bids
+      - timestamp
+      properties:
+        asks:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookLevel'
+        bids:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookLevel'
+        timestamp:
+          type: integer
+          format: int64
+    TradeSide:
       type: string
       enum:
-      - 1s
-      - 15s
-      - 30s
-      - 1m
-      - 2m
-      - 3m
-      - 5m
-      - 10m
-      - 15m
-      - 20m
-      - 30m
-      - 1h
-      - 4h
-      - 1d
-      - 1w
-      description: Interval of the candle
+      - buy
+      - sell
+      description: Side of the trade
     Token:
       type: object
       required:
@@ -512,8 +496,9 @@ components:
           format: double
           description: Total supply of the token
         logoUri:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: URI of the token's logo
         priceUsd:
           type: number
@@ -531,25 +516,43 @@ components:
           type: number
           format: double
           description: Token market cap in USD
-    GetTradeListResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Trade'
-    Book:
+    EvmTxnHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
+      description: EVM transaction hash
+    EvmAddress:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      description: EVM address
+    BookLevel:
       type: object
       required:
-      - asks
-      - bids
-      - timestamp
+      - price
+      - size
+      - number
       properties:
-        asks:
-          type: array
-          items:
-            $ref: '#/components/schemas/BookLevel'
-        bids:
-          type: array
-          items:
-            $ref: '#/components/schemas/BookLevel'
-        timestamp:
-          type: integer
-          format: int64
+        price:
+          type: string
+          description: Price of the level
+        size:
+          type: string
+          description: Size of the level
+        number:
+          type: number
+          description: Number of orders at the level
+    ErrorResponse:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: Error message
+    MarketType:
+      type: string
+      enum:
+      - bonding-curve
+      - amm
+      - clob-spot
+      - perps
+      description: Type of the market

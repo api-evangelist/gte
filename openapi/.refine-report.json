@@ -1,12 +1,7 @@
 {
   "provider": "gte",
   "sources": [
-    "gte-exchange-api-openapi.yml",
-    "gte-health-api-openapi.yml",
-    "gte-info-api-openapi.yml",
-    "gte-markets-api-openapi.yml",
-    "gte-tokens-api-openapi.yml",
-    "gte-users-api-openapi.yml"
+    "_original/gte-openapi-original.yml"
   ],
   "outputs": [
     "gte-exchange-api-openapi.yml",
@@ -19,6 +14,25 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gte-openapi-original.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "gte-openapi-original.yml: tagged paths GET /health -> Health",
+    "gte-openapi-original.yml: tagged paths GET /info -> Info",
+    "gte-openapi-original.yml: declared missing tag: Exchange",
+    "gte-openapi-original.yml: declared missing tag: Health",
+    "gte-openapi-original.yml: declared missing tag: Info",
+    "gte-openapi-original.yml: declared missing tag: Markets",
+    "gte-openapi-original.yml: declared missing tag: Tokens",
+    "gte-openapi-original.yml: declared missing tag: Users",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "gte-exchange-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gte-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gte-info-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gte-markets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gte-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gte-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
