@@ -120,91 +120,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    GetTokenListResponse:
-      description: List of tokens.
-      type: array
-      items:
-        $ref: '#/components/schemas/Token'
-    MarketType:
-      type: string
-      enum:
-      - bonding-curve
-      - amm
-      - clob-spot
-      - perps
-      description: Type of the market
-    DisplayMarket:
-      type: object
-      required:
-      - marketType
-      - marketAddress
-      properties:
-        marketType:
-          $ref: '#/components/schemas/MarketType'
-        marketAddress:
-          $ref: '#/components/schemas/EvmAddress'
-    Token:
-      type: object
-      required:
-      - address
-      - decimals
-      - name
-      - symbol
-      - totalSupply
-      - logoUri
-      - priceUsd
-      - volume1HrUsd
-      - volume24HrUsd
-      - marketCapUsd
-      properties:
-        address:
-          $ref: '#/components/schemas/EvmAddress'
-        decimals:
-          type: integer
-          description: Number of decimals for the token
-        name:
-          type: string
-          description: Name of the token
-        symbol:
-          type: string
-          description: Symbol of the token
-        totalSupply:
-          type: number
-          format: double
-          description: Total supply of the token
-        logoUri:
-          type:
-          - string
-          - 'null'
-          description: URI of the token's logo
-        priceUsd:
-          type: number
-          format: double
-          description: Price of token in USD
-        volume1HrUsd:
-          type: number
-          format: double
-          description: 1 hour volume in USD
-        volume24HrUsd:
-          type: number
-          format: double
-          description: 24 hour volume in USD
-        marketCapUsd:
-          type: number
-          format: double
-          description: Token market cap in USD
-    EvmAddress:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      description: EVM address
-    ErrorResponse:
-      type: object
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: Error message
     TokenMetadata:
       allOf:
       - $ref: '#/components/schemas/Token'
@@ -266,3 +181,88 @@ components:
                 - string
                 - 'null'
                 description: URL of the token's X/Twitter
+    Token:
+      type: object
+      required:
+      - address
+      - decimals
+      - name
+      - symbol
+      - totalSupply
+      - logoUri
+      - priceUsd
+      - volume1HrUsd
+      - volume24HrUsd
+      - marketCapUsd
+      properties:
+        address:
+          $ref: '#/components/schemas/EvmAddress'
+        decimals:
+          type: integer
+          description: Number of decimals for the token
+        name:
+          type: string
+          description: Name of the token
+        symbol:
+          type: string
+          description: Symbol of the token
+        totalSupply:
+          type: number
+          format: double
+          description: Total supply of the token
+        logoUri:
+          type:
+          - string
+          - 'null'
+          description: URI of the token's logo
+        priceUsd:
+          type: number
+          format: double
+          description: Price of token in USD
+        volume1HrUsd:
+          type: number
+          format: double
+          description: 1 hour volume in USD
+        volume24HrUsd:
+          type: number
+          format: double
+          description: 24 hour volume in USD
+        marketCapUsd:
+          type: number
+          format: double
+          description: Token market cap in USD
+    EvmAddress:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      description: EVM address
+    DisplayMarket:
+      type: object
+      required:
+      - marketType
+      - marketAddress
+      properties:
+        marketType:
+          $ref: '#/components/schemas/MarketType'
+        marketAddress:
+          $ref: '#/components/schemas/EvmAddress'
+    GetTokenListResponse:
+      description: List of tokens.
+      type: array
+      items:
+        $ref: '#/components/schemas/Token'
+    ErrorResponse:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: Error message
+    MarketType:
+      type: string
+      enum:
+      - bonding-curve
+      - amm
+      - clob-spot
+      - perps
+      description: Type of the market
