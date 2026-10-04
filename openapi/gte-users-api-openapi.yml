@@ -231,6 +231,108 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    BasicOrder:
+      type: object
+      required:
+      - orderId
+      - marketAddress
+      - side
+      properties:
+        orderId:
+          type: string
+        marketAddress:
+          $ref: '#/components/schemas/EvmAddress'
+        side:
+          $ref: '#/components/schemas/OrderSide'
+    LpPosition:
+      type: object
+      required:
+      - market
+      - balance
+      - shareOfPool
+      - apr
+      - token0Amount
+      - token1Amount
+      properties:
+        market:
+          $ref: '#/components/schemas/Market'
+          description: Market in which the LP position is held
+        balance:
+          type: number
+          format: double
+          description: Amount of LP tokens a user holds
+        shareOfPool:
+          type: number
+          format: float
+          description: Percentage of the pool of the position
+        apr:
+          type: number
+          format: float
+          description: APR of the liquidity pool
+        token0Amount:
+          type: string
+          description: Amount of token0 in LP
+        token1Amount:
+          type: string
+          description: Amount of token1 in Lp
+    Market:
+      type: object
+      required:
+      - marketType
+      - address
+      - baseToken
+      - quoteToken
+      - price
+      - priceUsd
+      - volume24HrUsd
+      - volume1HrUsd
+      - marketCapUsd
+      - createdAt
+      - tvlUsd
+      properties:
+        marketType:
+          $ref: '#/components/schemas/MarketType'
+        address:
+          $ref: '#/components/schemas/EvmAddress'
+          description: EVM address of the market
+        baseToken:
+          $ref: '#/components/schemas/Token'
+          description: Base token of the market. On AMMs, this token comes first in the pair
+        quoteToken:
+          $ref: '#/components/schemas/Token'
+          description: Quote token of the market. On AMMs, this token comes second in the pair
+        price:
+          type: number
+          format: double
+          description: Price of the base token in quote tokens.
+        priceUsd:
+          type: number
+          format: double
+          description: Price of the base token in USD.
+        volume24HrUsd:
+          type: number
+          format: double
+          description: Volume of the market in the last 24 hours in USD
+        volume1HrUsd:
+          type: number
+          format: double
+          description: Volume of the market in the last 1 hour in USD
+        marketCapUsd:
+          type: number
+          format: double
+          description: Market cap of the market in USD
+        createdAt:
+          type:
+          - integer
+          - 'null'
+          format: int64
+          description: Timestamp of when the market was deployed in UTC millis
+        tvlUsd:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: TVL of the market in Usd. Null if not applicable.
     FilledOrder:
       allOf:
       - $ref: '#/components/schemas/BasicOrder'
@@ -253,14 +355,94 @@ components:
           sizeFilled:
             type: string
             description: Size filled in base token
-    GetUserOpenOrdersResponse:
+    OpenOrder:
+      allOf:
+      - $ref: '#/components/schemas/BasicOrder'
+      - type: object
+        required:
+        - originalSize
+        - limitPrice
+        - sizeFilled
+        - placedAt
+        properties:
+          originalSize:
+            type: string
+            description: Original size of the order in base token
+          limitPrice:
+            type: string
+            description: Limit price of the order in quote token
+          sizeFilled:
+            type: string
+            description: Size filled in base token
+          placedAt:
+            type: integer
+            format: int64
+            description: Timestamp of when the order was first placed in UTC millis
+    GetUserPortfolioResponse:
+      $ref: '#/components/schemas/UserPortfolio'
+    TradeSide:
+      type: string
+      enum:
+      - buy
+      - sell
+      description: Side of the trade
+    OrderType:
+      type: string
+      enum:
+      - limit
+      - fill
+    GetUserFilledOrdersResponse:
       type: array
       items:
-        $ref: '#/components/schemas/OpenOrder'
-    EvmTxnHash:
+        $ref: '#/components/schemas/FilledOrder'
+    GetUserOrderHistoryResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Order'
+    Order:
+      allOf:
+      - $ref: '#/components/schemas/BasicOrder'
+      - type: object
+        required:
+        - orderType
+        - originalSize
+        - limitPrice
+        - placedAt
+        properties:
+          orderType:
+            $ref: '#/components/schemas/OrderType'
+          originalSize:
+            type: string
+            description: Original size of the order in base token
+          limitPrice:
+            type: string
+            description: Limit price of the order in quote token
+          placedAt:
+            type: integer
+            format: int64
+            description: Timestamp of when the order was first placed in UTC millis
+    EvmAddress:
       type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
-      description: EVM transaction hash
+      pattern: ^0x[a-fA-F0-9]{40}$
+      description: EVM address
+    UserPortfolio:
+      type: object
+      required:
+      - tokens
+      - totalUsdBalance
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/TokenBalance'
+        totalUsdBalance:
+          type: number
+          format: double
+          description: User's total USD balance
+    GetUserLpPositionsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/LpPosition'
     OrderSide:
       type: string
       enum:
@@ -357,212 +539,14 @@ components:
           type: number
           format: double
           description: Token market cap in USD
-    EvmAddress:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      description: EVM address
-    GetUserPortfolioResponse:
-      $ref: '#/components/schemas/UserPortfolio'
-    UserPortfolio:
-      type: object
-      required:
-      - tokens
-      - totalUsdBalance
-      properties:
-        tokens:
-          type: array
-          items:
-            $ref: '#/components/schemas/TokenBalance'
-        totalUsdBalance:
-          type: number
-          format: double
-          description: User's total USD balance
+    GetUserOpenOrdersResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/OpenOrder'
     GetTradeListResponse:
       type: array
       items:
         $ref: '#/components/schemas/Trade'
-    OrderType:
-      type: string
-      enum:
-      - limit
-      - fill
-    MarketType:
-      type: string
-      enum:
-      - bonding-curve
-      - amm
-      - clob-spot
-      - perps
-      description: Type of the market
-    GetUserFilledOrdersResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/FilledOrder'
-    GetUserLpPositionsResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/LpPosition'
-    LpPosition:
-      type: object
-      required:
-      - market
-      - balance
-      - shareOfPool
-      - apr
-      - token0Amount
-      - token1Amount
-      properties:
-        market:
-          $ref: '#/components/schemas/Market'
-          description: Market in which the LP position is held
-        balance:
-          type: number
-          format: double
-          description: Amount of LP tokens a user holds
-        shareOfPool:
-          type: number
-          format: float
-          description: Percentage of the pool of the position
-        apr:
-          type: number
-          format: float
-          description: APR of the liquidity pool
-        token0Amount:
-          type: string
-          description: Amount of token0 in LP
-        token1Amount:
-          type: string
-          description: Amount of token1 in Lp
-    ErrorResponse:
-      type: object
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: Error message
-    Order:
-      allOf:
-      - $ref: '#/components/schemas/BasicOrder'
-      - type: object
-        required:
-        - orderType
-        - originalSize
-        - limitPrice
-        - placedAt
-        properties:
-          orderType:
-            $ref: '#/components/schemas/OrderType'
-          originalSize:
-            type: string
-            description: Original size of the order in base token
-          limitPrice:
-            type: string
-            description: Limit price of the order in quote token
-          placedAt:
-            type: integer
-            format: int64
-            description: Timestamp of when the order was first placed in UTC millis
-    BasicOrder:
-      type: object
-      required:
-      - orderId
-      - marketAddress
-      - side
-      properties:
-        orderId:
-          type: string
-        marketAddress:
-          $ref: '#/components/schemas/EvmAddress'
-        side:
-          $ref: '#/components/schemas/OrderSide'
-    Market:
-      type: object
-      required:
-      - marketType
-      - address
-      - baseToken
-      - quoteToken
-      - price
-      - priceUsd
-      - volume24HrUsd
-      - volume1HrUsd
-      - marketCapUsd
-      - createdAt
-      - tvlUsd
-      properties:
-        marketType:
-          $ref: '#/components/schemas/MarketType'
-        address:
-          $ref: '#/components/schemas/EvmAddress'
-          description: EVM address of the market
-        baseToken:
-          $ref: '#/components/schemas/Token'
-          description: Base token of the market. On AMMs, this token comes first in the pair
-        quoteToken:
-          $ref: '#/components/schemas/Token'
-          description: Quote token of the market. On AMMs, this token comes second in the pair
-        price:
-          type: number
-          format: double
-          description: Price of the base token in quote tokens.
-        priceUsd:
-          type: number
-          format: double
-          description: Price of the base token in USD.
-        volume24HrUsd:
-          type: number
-          format: double
-          description: Volume of the market in the last 24 hours in USD
-        volume1HrUsd:
-          type: number
-          format: double
-          description: Volume of the market in the last 1 hour in USD
-        marketCapUsd:
-          type: number
-          format: double
-          description: Market cap of the market in USD
-        createdAt:
-          type:
-          - integer
-          - 'null'
-          format: int64
-          description: Timestamp of when the market was deployed in UTC millis
-        tvlUsd:
-          type:
-          - number
-          - 'null'
-          format: double
-          description: TVL of the market in Usd. Null if not applicable.
-    OpenOrder:
-      allOf:
-      - $ref: '#/components/schemas/BasicOrder'
-      - type: object
-        required:
-        - originalSize
-        - limitPrice
-        - sizeFilled
-        - placedAt
-        properties:
-          originalSize:
-            type: string
-            description: Original size of the order in base token
-          limitPrice:
-            type: string
-            description: Limit price of the order in quote token
-          sizeFilled:
-            type: string
-            description: Size filled in base token
-          placedAt:
-            type: integer
-            format: int64
-            description: Timestamp of when the order was first placed in UTC millis
-    TradeSide:
-      type: string
-      enum:
-      - buy
-      - sell
-      description: Side of the trade
     TokenBalance:
       type: object
       required:
@@ -589,7 +573,23 @@ components:
           type: number
           format: double
           description: Unrealized pnl in USD
-    GetUserOrderHistoryResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Order'
+    ErrorResponse:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: Error message
+    EvmTxnHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
+      description: EVM transaction hash
+    MarketType:
+      type: string
+      enum:
+      - bonding-curve
+      - amm
+      - clob-spot
+      - perps
+      description: Type of the market
