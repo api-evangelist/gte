@@ -277,6 +277,25 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    CandleInterval:
+      type: string
+      enum:
+      - 1s
+      - 15s
+      - 30s
+      - 1m
+      - 2m
+      - 3m
+      - 5m
+      - 10m
+      - 15m
+      - 20m
+      - 30m
+      - 1h
+      - 4h
+      - 1d
+      - 1w
+      description: Interval of the candle
     Token:
       type: object
       required:
@@ -327,10 +346,138 @@ components:
           type: number
           format: double
           description: Token market cap in USD
-    EvmAddress:
+    EvmTxnHash:
       type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      description: EVM address
+      pattern: ^0x[a-fA-F0-9]{64}$
+      description: EVM transaction hash
+    GetMarketBookResponse:
+      $ref: '#/components/schemas/Book'
+    GetMarketListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Market'
+    Trade:
+      type: object
+      description: Trades in Launchpad and AMM markets.
+      required:
+      - timestamp
+      - txnHash
+      - maker
+      - taker
+      - price
+      - size
+      - side
+      - marketAddress
+      properties:
+        marketAddress:
+          $ref: '#/components/schemas/EvmAddress'
+          description: EVM address of the market
+        timestamp:
+          type: integer
+          format: int64
+          description: Timestamp of the trade in milliseconds
+        txnHash:
+          $ref: '#/components/schemas/EvmTxnHash'
+          description: Transaction hash of the trade
+        maker:
+          $ref: '#/components/schemas/EvmAddress'
+          description: EVM address of the maker
+        taker:
+          $ref: '#/components/schemas/EvmAddress'
+          description: EVM address of the taker
+        price:
+          type: number
+          format: double
+          description: Price of the trade in quote tokens
+        size:
+          type: number
+          format: double
+          description: Size of the trade in base tokens
+        side:
+          $ref: '#/components/schemas/TradeSide'
+          description: Side of the trade by the taker
+    Candle:
+      type: object
+      required:
+      - timestamp
+      - open
+      - high
+      - low
+      - close
+      - volume
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Start time of the candle in milliseconds
+        open:
+          type: number
+          format: double
+          description: Open price of the candle (in quote asset)
+        high:
+          type: number
+          format: double
+          description: High price of the candle (in quote asset)
+        low:
+          type: number
+          format: double
+          description: Low price of the candle (in quote asset)
+        close:
+          type: number
+          format: double
+          description: Close price of the candle (in quote asset)
+        volume:
+          type: number
+          format: double
+          description: Volume of the candle (in base asset)
+    TradeSide:
+      type: string
+      enum:
+      - buy
+      - sell
+      description: Side of the trade
+    GetTradeListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Trade'
+    GetMarketCandlesResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Candle'
+    Book:
+      type: object
+      required:
+      - asks
+      - bids
+      - timestamp
+      properties:
+        asks:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookLevel'
+        bids:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookLevel'
+        timestamp:
+          type: integer
+          format: int64
+    ErrorResponse:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: Error message
+    MarketType:
+      type: string
+      enum:
+      - bonding-curve
+      - amm
+      - clob-spot
+      - perps
+      description: Type of the market
     Market:
       type: object
       required:
@@ -389,97 +536,10 @@ components:
           - 'null'
           format: double
           description: TVL of the market in Usd. Null if not applicable.
-    GetMarketBookResponse:
-      $ref: '#/components/schemas/Book'
-    Candle:
-      type: object
-      required:
-      - timestamp
-      - open
-      - high
-      - low
-      - close
-      - volume
-      properties:
-        timestamp:
-          type: integer
-          format: int64
-          description: Start time of the candle in milliseconds
-        open:
-          type: number
-          format: double
-          description: Open price of the candle (in quote asset)
-        high:
-          type: number
-          format: double
-          description: High price of the candle (in quote asset)
-        low:
-          type: number
-          format: double
-          description: Low price of the candle (in quote asset)
-        close:
-          type: number
-          format: double
-          description: Close price of the candle (in quote asset)
-        volume:
-          type: number
-          format: double
-          description: Volume of the candle (in base asset)
-    Book:
-      type: object
-      required:
-      - asks
-      - bids
-      - timestamp
-      properties:
-        asks:
-          type: array
-          items:
-            $ref: '#/components/schemas/BookLevel'
-        bids:
-          type: array
-          items:
-            $ref: '#/components/schemas/BookLevel'
-        timestamp:
-          type: integer
-          format: int64
-    EvmTxnHash:
+    EvmAddress:
       type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
-      description: EVM transaction hash
-    GetMarketListResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Market'
-    GetTradeListResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Trade'
-    TradeSide:
-      type: string
-      enum:
-      - buy
-      - sell
-      description: Side of the trade
-    CandleInterval:
-      type: string
-      enum:
-      - 1s
-      - 15s
-      - 30s
-      - 1m
-      - 2m
-      - 3m
-      - 5m
-      - 10m
-      - 15m
-      - 20m
-      - 30m
-      - 1h
-      - 4h
-      - 1d
-      - 1w
-      description: Interval of the candle
+      pattern: ^0x[a-fA-F0-9]{40}$
+      description: EVM address
     BookLevel:
       type: object
       required:
@@ -496,63 +556,3 @@ components:
         number:
           type: number
           description: Number of orders at the level
-    Trade:
-      type: object
-      description: Trades in Launchpad and AMM markets.
-      required:
-      - timestamp
-      - txnHash
-      - maker
-      - taker
-      - price
-      - size
-      - side
-      - marketAddress
-      properties:
-        marketAddress:
-          $ref: '#/components/schemas/EvmAddress'
-          description: EVM address of the market
-        timestamp:
-          type: integer
-          format: int64
-          description: Timestamp of the trade in milliseconds
-        txnHash:
-          $ref: '#/components/schemas/EvmTxnHash'
-          description: Transaction hash of the trade
-        maker:
-          $ref: '#/components/schemas/EvmAddress'
-          description: EVM address of the maker
-        taker:
-          $ref: '#/components/schemas/EvmAddress'
-          description: EVM address of the taker
-        price:
-          type: number
-          format: double
-          description: Price of the trade in quote tokens
-        size:
-          type: number
-          format: double
-          description: Size of the trade in base tokens
-        side:
-          $ref: '#/components/schemas/TradeSide'
-          description: Side of the trade by the taker
-    MarketType:
-      type: string
-      enum:
-      - bonding-curve
-      - amm
-      - clob-spot
-      - perps
-      description: Type of the market
-    ErrorResponse:
-      type: object
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: Error message
-    GetMarketCandlesResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Candle'
